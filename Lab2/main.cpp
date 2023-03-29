@@ -5,10 +5,10 @@ using namespace std;
 
 int main() {
     //init table
-    string Table[100];
+    record List[100];
     int currentRecord = 0;
 
     while (true) {
-        ui(Table, &currentRecord);
+        ui(List, &currentRecord);
     }
 }
