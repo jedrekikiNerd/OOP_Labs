@@ -4,30 +4,30 @@
 using namespace std;
 
 //Wyświetla listę studentów
-void printList() {
+void printList(string Table[], int *currentRecord) {
 
-    for(int i=0; i<100; i++) {
+    for(int i=0; i<*currentRecord; i++) {
         cout << Table[i] << endl;
     }
 }
 
 //Pobieranie wejścia od użytkowanika z klawiatury
-void input() {
+string input() {
 
     string userInput;
     cout << "Podaj indeks: ";
     cin >> userInput;
-    newRecord(userInput);
+    return userInput;
 }
 
-void ui() {
+void ui(string Table[], int *currentRecord) {
 
     int operation;
-    cout << "Witaj!\n";
+    cout << "\n";
     cout << "1. Wyświetl listę\n2.Dodaj wpis do listy\nPodaj opcje: ";
     cin >> operation;
     if (operation == 1) 
-        printList();
+        printList(Table, currentRecord);
     else if (operation == 2)
-        input();
+        newRecord(input(), Table, currentRecord);
 }
