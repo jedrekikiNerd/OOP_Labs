@@ -4,10 +4,9 @@
 using namespace std;
 
 //Wyświetla listę studentów
-void printList(AttendanceList list) {
-
-    for(int i=0; i<list.getSize(); i++) {
-        cout << i << "   " << list.getStudent(i).getName() << "   " << list.getStudent(i).getSurname() << "   " << list.getStudent(i).getId() << endl;
+void printList(AttendanceList* list) {
+    for(int i=0; i<list->getSize(); i++) {
+        cout << (i+1) << "   " << list->getStudent(i).getName() << "   " << list->getStudent(i).getSurname() << "   " << list->getStudent(i).getId() << endl;
     }
 }
 
@@ -30,7 +29,7 @@ string input(string option) {
 }
 
 //Bazowa funkcja zarządzania interfejsem i służąca do komunikacji z użytkownikiem
-void ui(AttendanceList list) {
+void ui(AttendanceList* list) {
 
     int operation;
     cout << "\n";
@@ -40,4 +39,6 @@ void ui(AttendanceList list) {
         printList(list);
     else if (operation == 2)
         newRecord(input("id"), input("name"), input("surname"), list);
+    else if (operation == 3)
+        list->writefile("file.txt");
 }

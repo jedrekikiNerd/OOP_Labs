@@ -6,10 +6,12 @@ using namespace std;
 int main() {
     //init table
     AttendanceList list;
-    int currentRecord = 0;
+    list.readfile("file.txt");
+    AttendanceList* ptr;
+    ptr = &list;
 
     while (true) {
-        ui(list);
+        ui(ptr);
     }
     return 0;
 }

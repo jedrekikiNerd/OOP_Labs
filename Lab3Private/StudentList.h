@@ -1,10 +1,11 @@
 #include <iostream>
-#include <Student.h>
+#include <fstream>
+#include "Student.h"
 
 class AttendanceList
 {
     private:
-        int size = 1;
+        int size = 0;
         Student* list = new Student[size];
     
     public:
@@ -21,12 +22,22 @@ class AttendanceList
         /**
          * @return size of students list
         */
-        int getSize();
+        int getSize() {return size;};
         /**
          * @param string number - index of student in list to remove
          * @return exitCode
         */
         int removeStudent(int number);
+        /**
+         * @param string path to file
+         * @return 1 if file error
+        */
+        int readfile(std::string path);
+        /**
+         * @param string path to file
+         * @return 1 if file error
+        */
+        int writefile(std::string path);
         
 
 };

@@ -11,15 +11,11 @@ int AttendanceList::addStudent(Student newStudent) {
     for(int i=0; i<size; i++)
         tmp[i] = list[i];
 
-    size = size + 1;
     tmp[size] = newStudent;
     delete [] list;
+    size += 1;
     list = tmp;
     return 0;
-}
-
-int AttendanceList::getSize() {
-    return size;
 }
 
 int AttendanceList::removeStudent(int number) {
@@ -30,9 +26,56 @@ int AttendanceList::removeStudent(int number) {
             tmp[i] = list[i];
     }
 
-    size = size - 1;
+    size -= 1;
     delete [] list;
     list = tmp;
     return 0;
 
+}
+
+int AttendanceList::readfile(std::string path) {
+    std::fstream file;
+    std::string line;
+    file.open(path);
+
+    if ( !file.good() ) {
+        return 1;
+    }
+
+    while ( !file.eof() ) {
+        Student newStudent;
+        std::string id;
+        std::string name;
+        std::string surname;
+        file >> id;
+        file >> name;
+        file >> surname;
+        newStudent.setId(id);
+        newStudent.setName(name);
+        newStudent.setSurname(surname);
+        addStudent(newStudent);
+    }
+    file.close();
+    return 0;
+}
+
+int AttendanceList::writefile(std::string path){
+    std::ofstream file;
+    file.open(path);
+    if ( !file.good() ) {
+        return 1;
+    }
+
+    for ( int row=0; row < size; row++ ) {
+        std::string line = "";
+        line += getStudent(row).getId();
+        line += " ";
+        line += getStudent(row).getName();
+        line += " ";
+        line += getStudent(row).getSurname();
+        line += "\n";
+        file << line;
+
+    }
+    return 0;
 }
