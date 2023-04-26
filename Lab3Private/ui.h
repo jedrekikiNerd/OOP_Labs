@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Student.h"
-void ui(Student List[], int *currentRecord);
-void printList(Student List[], int *currentRecord);
+#include "table.h"
+void ui(AttendanceList list);
+void printList(AttendanceList list);
 std::string input();

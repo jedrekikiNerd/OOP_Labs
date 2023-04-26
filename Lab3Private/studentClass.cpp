@@ -1,9 +1,9 @@
 #include "Student.h"
 
-int Student::setIndex(std::string value) {
-    int result = validateIndex(value);
+int Student::setId(std::string value) {
+    int result = validateId(value);
     if (result == 0) {
-        index = value;
+        id = value;
         return 0;
     }
     else
@@ -18,7 +18,7 @@ void Student::setSurname(std::string value) {
     surname = value;
 }
 
-int Student::validateIndex(std::string value) {
+int Student::validateId(std::string value) {
     if (value.size() > 11)
         return 1;
     else if (value.size() < 11)

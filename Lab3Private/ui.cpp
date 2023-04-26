@@ -1,13 +1,13 @@
 #include <iostream>
-#include "table.h"
+#include "ui.h"
 
 using namespace std;
 
 //Wyświetla listę studentów
-void printList(Student List[], int *currentRecord) {
+void printList(AttendanceList list) {
 
-    for(int i=0; i<*currentRecord; i++) {
-        cout << List[i].getName() << "   " << List[i].getSurname() << "   " << List[i].getIndex() << endl;
+    for(int i=0; i<list.getSize(); i++) {
+        cout << i << "   " << list.getStudent(i).getName() << "   " << list.getStudent(i).getSurname() << "   " << list.getStudent(i).getId() << endl;
     }
 }
 
@@ -16,8 +16,8 @@ string input(string option) {
 
     string userInput;
 
-    if (option == "index")
-        cout << "Podaj indeks: ";
+    if (option == "id")
+        cout << "Podaj pesel: ";
 
     else if (option == "name")
         cout << "Podaj imię: ";
@@ -30,14 +30,14 @@ string input(string option) {
 }
 
 //Bazowa funkcja zarządzania interfejsem i służąca do komunikacji z użytkownikiem
-void ui(Student List[], int *currentRecord) {
+void ui(AttendanceList list) {
 
     int operation;
     cout << "\n";
     cout << "1. Wyświetl listę\n2.Dodaj wpis do listy\nPodaj opcje: ";
     cin >> operation;
     if (operation == 1) 
-        printList(List, currentRecord);
+        printList(list);
     else if (operation == 2)
-        newRecord(input("index"), input("name"), input("surname"), List, currentRecord);
+        newRecord(input("id"), input("name"), input("surname"), list);
 }

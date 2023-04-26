@@ -5,11 +5,11 @@ using namespace std;
 
 int main() {
     //init table
-    Student List[100];
+    AttendanceList list;
     int currentRecord = 0;
 
     while (true) {
-        ui(List, &currentRecord);
+        ui(list);
     }
     return 0;
 }
