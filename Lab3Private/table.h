@@ -1,3 +1,2 @@
-#include <iostream>
-#include "StudentList.h"
-int newRecord(std::string id, std::string imie, std::string nazwisko, AttendanceList* list);
+#include "PersonList.h"
+int newRecord(std::string id, std::string imie, std::string nazwisko, PersonList* list);

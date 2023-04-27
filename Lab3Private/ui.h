@@ -1,5 +1,4 @@
-#include <iostream>
 #include "table.h"
-void ui(AttendanceList* list);
-void printList(AttendanceList* list);
+void ui(PersonList* list);
+void printList(PersonList* list);
 std::string input();

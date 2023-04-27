@@ -1,6 +1,6 @@
-#include "Student.h"
+#include "Person.h"
 
-int Student::setId(std::string value) {
+int Person::setId(std::string value) {
     int result = validateId(value);
     if (result == 0) {
         id = value;
@@ -10,15 +10,15 @@ int Student::setId(std::string value) {
         return result;
 }
 
-void Student::setName(std::string value) {
+void Person::setName(std::string value) {
     name = value;
 }
 
-void Student::setSurname(std::string value) {
+void Person::setSurname(std::string value) {
     surname = value;
 }
 
-int Student::validateId(std::string value) {
+int Person::validateId(std::string value) {
     if (value.size() > 11)
         return 1;
     else if (value.size() < 11)

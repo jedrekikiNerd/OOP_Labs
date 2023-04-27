@@ -5,9 +5,9 @@ using namespace std;
 
 int main() {
     //init table
-    AttendanceList list;
+    PersonList list;
     list.readfile("file.txt");
-    AttendanceList* ptr;
+    PersonList* ptr;
     ptr = &list;
 
     while (true) {

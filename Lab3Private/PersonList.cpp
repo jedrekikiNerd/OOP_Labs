@@ -1,25 +1,25 @@
-#include "StudentList.h"
+#include "PersonList.h"
 
 
-Student AttendanceList::getStudent(int number) {
+Person PersonList::getPerson(int number) {
     return list[number];
 }
 
-int AttendanceList::addStudent(Student newStudent) {
-    Student *tmp = new Student[size+1];
+int PersonList::addPerson(Person newPerson) {
+    Person *tmp = new Person[size+1];
 
     for(int i=0; i<size; i++)
         tmp[i] = list[i];
 
-    tmp[size] = newStudent;
+    tmp[size] = newPerson;
     delete [] list;
     size += 1;
     list = tmp;
     return 0;
 }
 
-int AttendanceList::removeStudent(int number) {
-    Student *tmp = new Student[size-1];
+int PersonList::removePerson(int number) {
+    Person *tmp = new Person[size-1];
 
     for(int i=0; i<=size; i++) {
         if(i != number)
@@ -33,7 +33,7 @@ int AttendanceList::removeStudent(int number) {
 
 }
 
-int AttendanceList::readfile(std::string path) {
+int PersonList::readfile(std::string path) {
     std::fstream file;
     std::string line;
     file.open(path);
@@ -43,23 +43,23 @@ int AttendanceList::readfile(std::string path) {
     }
 
     while ( !file.eof() ) {
-        Student newStudent;
+        Person newPerson;
         std::string id;
         std::string name;
         std::string surname;
         file >> id;
         file >> name;
         file >> surname;
-        newStudent.setId(id);
-        newStudent.setName(name);
-        newStudent.setSurname(surname);
-        addStudent(newStudent);
+        newPerson.setId(id);
+        newPerson.setName(name);
+        newPerson.setSurname(surname);
+        addPerson(newPerson);
     }
     file.close();
     return 0;
 }
 
-int AttendanceList::writefile(std::string path){
+int PersonList::writefile(std::string path){
     std::ofstream file;
     file.open(path);
     if ( !file.good() ) {
@@ -68,11 +68,11 @@ int AttendanceList::writefile(std::string path){
 
     for ( int row=0; row < size; row++ ) {
         std::string line = "";
-        line += getStudent(row).getId();
+        line += getPerson(row).getId();
         line += " ";
-        line += getStudent(row).getName();
+        line += getPerson(row).getName();
         line += " ";
-        line += getStudent(row).getSurname();
+        line += getPerson(row).getSurname();
         line += "\n";
         file << line;
 
