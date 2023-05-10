@@ -7,7 +7,6 @@ class Student : public Person
 
     public:
         int setIndex(std::string value);
-        void setName(std::string value);
         std::string getIndex() {return index;}
 
 };

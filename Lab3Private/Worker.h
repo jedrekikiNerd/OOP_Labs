@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Person.h"
+#include "Student.h"
 
 class Worker : public Person
 {

@@ -37,7 +37,7 @@ int PersonList::readfile(std::string path) {
     std::fstream file;
     std::string line;
     file.open(path);
-
+    
     if ( !file.good() ) {
         return 1;
     }

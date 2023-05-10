@@ -1,13 +1,11 @@
 #include <fstream>
-#include "Person.h"
+#include "Worker.h"
 
 class PersonList
 {
     private:
+        int size = 0;
         Person* list = new Person[size];
-    
-    protected:
-    int size = 0;
     
     public:
         /**

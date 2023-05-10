@@ -37,8 +37,15 @@ void ui(PersonList* list) {
     cin >> operation;
     if (operation == 1) 
         printList(list);
-    else if (operation == 2)
-        newRecord(input("id"), input("name"), input("surname"), list);
+    else if (operation == 2) {
+        cout << "1. Dodaj studenta\n2.Dodaj pracownika\nPodaj opcje: ";
+        cin >> operation;
+
+        if (operation == 1)
+            newRecord(input("id"), input("name"), input("surname"), list, "student");
+        else if (operation == 2)
+            newRecord(input("id"), input("name"), input("surname"), list, "worker");
+    }
     else if (operation == 3)
         list->writefile("file.txt");
 }
