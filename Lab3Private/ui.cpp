@@ -6,7 +6,8 @@ using namespace std;
 //Wyświetla listę studentów
 void printList(PersonList* list) {
     for(int i=0; i<list->getSize(); i++) {
-        cout << (i+1) << "   " << list->getPerson(i).getName() << "   " << list->getPerson(i).getSurname() << "   " << list->getPerson(i).getId() << endl;
+        //cout << (i+1) << "   " << list->getPerson(i).getName() << "   " << list->getPerson(i).getSurname() << "   " << list->getPerson(i).getId() << endl;
+        cout << list->getPerson(i).toString();
     }
 }
 

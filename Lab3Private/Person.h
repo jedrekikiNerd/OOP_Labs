@@ -1,6 +1,7 @@
 #include <iostream>
+#include "IPrintable.h"
 
-class Person
+class Person : public IPrintable
 {
     protected:
         std::string name;
