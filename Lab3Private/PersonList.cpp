@@ -1,12 +1,12 @@
 #include "PersonList.h"
+#include <assert.h>
 
-
-Person PersonList::getPerson(int number) {
+Person *PersonList::getPerson(int number) {
     return list[number];
 }
 
-int PersonList::addPerson(Person newPerson) {
-    Person *tmp = new Person[size+1];
+int PersonList::addPerson(Person* newPerson) {
+    Person **tmp = new Person*[size+1];
 
     for(int i=0; i<size; i++)
         tmp[i] = list[i];
@@ -19,23 +19,25 @@ int PersonList::addPerson(Person newPerson) {
 }
 
 int PersonList::removePerson(int number) {
-    Person *tmp = new Person[size-1];
+    if (number>size || number<=0)
+        return 1;
+    Person **tmp = new Person*[size-1];
 
-    for(int i=0; i<=size; i++) {
-        if(i != number)
-            tmp[i] = list[i];
+    int k = 0;
+    for(int i=0; i<size; i++) {
+        if(i != number-1) {
+            tmp[k] = list[i];
+            k++;
+        }
     }
-
     size -= 1;
     delete [] list;
     list = tmp;
     return 0;
-
 }
 
 int PersonList::readfile(std::string path) {
     std::fstream file;
-    std::string line;
     file.open(path);
     
     if ( !file.good() ) {
@@ -43,16 +45,36 @@ int PersonList::readfile(std::string path) {
     }
 
     while ( !file.eof() ) {
-        Person newPerson;
+        Person *newPerson;
+        std::string type;
         std::string id;
+        std::string specialID = "";
         std::string name;
         std::string surname;
+
+        file >> type;
+        if (type == "") {
+            delete newPerson;
+            return 1;
+        }
         file >> id;
         file >> name;
         file >> surname;
-        newPerson.setId(id);
-        newPerson.setName(name);
-        newPerson.setSurname(surname);
+
+        if (type == "Student") {
+            file >> specialID;
+            newPerson = new Student();
+            newPerson->setSpecialId(specialID);
+        }
+        else if (type == "Worker") {
+            file >> specialID;
+            newPerson = new Worker();
+            newPerson->setSpecialId(specialID);
+        }
+
+        newPerson->setId(id);
+        newPerson->setName(name);
+        newPerson->setSurname(surname);
         addPerson(newPerson);
     }
     file.close();
@@ -68,12 +90,12 @@ int PersonList::writefile(std::string path){
 
     for ( int row=0; row < size; row++ ) {
         std::string line = "";
-        line += getPerson(row).getId();
+        Person *tmpPersonPointer = getPerson(row);
+        line += tmpPersonPointer->getType();
         line += " ";
-        line += getPerson(row).getName();
-        line += " ";
-        line += getPerson(row).getSurname();
-        line += "\n";
+        line += tmpPersonPointer->toString();
+        if (row != (size-1))
+            line += "\n";
         file << line;
 
     }

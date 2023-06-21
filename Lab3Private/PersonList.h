@@ -5,42 +5,51 @@ class PersonList
 {
     private:
         int size = 0;
-        Person* list = new Person[size];
+        Person** list = new Person*[size];
     
     public:
         /**
-         * @param int number - index of person in list we want to get
-         * @return person object in array of people that has given index
+         * Getter for person of given number from person array
+         * 
+         * @param number - int index of person in list we want to get
+         * @return pointer to person object in array of Person that has given index
         */
-        Person getPerson(int number);
+        Person* getPerson(int number);
 
         /**
-         * @param Person object
+         * Adds new person to our list
+         * 
+         * @param Person pointer to object of Person class
          * @return exitCode
         */
-        int addPerson(Person newPerson);
+        int addPerson(Person *newPerson);
 
         /**
-         * @param Student object
-         * @return exitCode
+         * @return size of array
         */
         int getSize() {return size;};
 
         /**
-         * @param string number - what number is person on the list to remove
-         * @return exitCode
+         * Removes person object from list
+         * 
+         * @param number - int representing line we want to remove
+         * @return exitCode 0 is success, 1 is wrong number
         */
         int removePerson(int number);
 
         /**
-         * @param string path to file
-         * @return 1 if file error
+         * Reads file in order to use previously saved list
+         * 
+         * @param path string representing path to file
+         * @return exitCode 1 if file error, 0 if success
         */
         int readfile(std::string path);
 
         /**
-         * @param string path to file
-         * @return 1 if file error
+         * Saves people list to file
+         * 
+         * @param path string representing path to file
+         * @return exitCode 1 if file error, 0 if success
         */
         int writefile(std::string path);
         

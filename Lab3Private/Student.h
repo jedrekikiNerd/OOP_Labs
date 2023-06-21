@@ -8,5 +8,8 @@ class Student : public Person
     public:
         int setIndex(std::string value);
         std::string getIndex() {return index;}
+        virtual int setSpecialId(std::string specialId);
+        virtual std::string toString();
+        virtual std::string getType();
 
 };

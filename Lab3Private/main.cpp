@@ -6,12 +6,22 @@ using namespace std;
 int main() {
     //init table
     PersonList list;
-    list.readfile("file.txt");
+
+    //List readfile and wait for user
+    if(list.readfile("file.txt"))
+        cout << "Nie wczytano danych z żadnego pliku\n";
+    cout << "\nWciśnij enter, aby rozpocząć...";
+    cin.ignore();
+    system("clear");
+
+    //Make pointer to our list
     PersonList* ptr;
     ptr = &list;
 
+    //Go into mainloop
     while (true) {
-        ui(ptr);
+        if(ui(ptr))
+            break;
     }
     return 0;
 }

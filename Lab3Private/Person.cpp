@@ -26,3 +26,17 @@ int Person::validateId(std::string value) {
     
     return 0;
 }
+
+std::string Person::toString() {
+    std::string output = "";
+    output += this->getId();
+    output += " ";
+    output += this->getName();
+    output += " ";
+    output += this->getSurname();
+    return output;
+}
+
+std::string Person::getType() {
+    return "Person";
+}
