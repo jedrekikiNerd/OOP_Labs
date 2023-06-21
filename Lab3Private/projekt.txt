@@ -1,9 +1,0 @@
-base class Person
-Student extends Person (adds index)
-Worker extends Person (adds worker id)
-
-base class List
-StudentList extends List (has list of Students instead of list of people)
-WorkerList extends List (has list of Students instead of list of people)
-
-FileManager class - base class for saving and reading files has StudentSaveMode, WorkerSaveMode, PersonSaveMode
